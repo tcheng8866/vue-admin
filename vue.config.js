@@ -36,6 +36,16 @@ module.exports = {
       warnings: false,
       errors: true
     },
+    // proxy: {
+    //   '/va-core': {
+    //     target: 'http://10.10.67.57:9018/',   // sit（57/58 -9018）
+    //     // target: 'http://10.100.0.56:9018/',   // uat
+    //     changeOrigin: true,
+    //     pathRewrite: {
+    //       '^/va-core': '' // 重写路径
+    //     }
+    //   }
+    // },
     before: require('./mock/mock-server.js')
   },
   configureWebpack: {

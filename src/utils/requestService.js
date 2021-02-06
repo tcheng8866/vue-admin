@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { Message } from 'element-ui'
 import router from '@/router'
-// import store from '@/store'
+import store from '@/store'
 import { getToken } from '@/utils/auth'
 
 const service = axios.create({
@@ -14,12 +14,9 @@ const service = axios.create({
 // http request 拦截器
 service.interceptors.request.use(
   config => {
-    // config.headers['Access-Control-Allow-Origin'] = true
     config.headers['Content-Type'] = 'application/json; charset=UTF-8'
     config.headers['X-Requested-With'] = 'XMLHttpRequest'
     config.headers['token'] = getToken()
-    // config.headers['Authorization'] = 'bearer 067e2ea3-84b9-4366-ba93-8a9b3417971d'
-    config.headers['appName'] = 'if-bm-front' // 和bm-front、bm-core一致[改动影响不可控]
     return config
   },
   error => {
@@ -35,9 +32,8 @@ service.interceptors.response.use(
       // sso 的状态码 TODO
       if (response.data.code === 1002) {
         // 此处不给退出（/login），用户主动退出才跳转登陆页面
-
-        // store.dispatch('user/logout')
-        // store.dispatch('tagsView/delAllViews') // 关闭tags
+        store.dispatch('user/logout')
+        store.dispatch('tagsView/delAllViews') // 关闭tags
       }
       // 远程调用服务异常
       Message.error(response.data.message || response.data.msg)
