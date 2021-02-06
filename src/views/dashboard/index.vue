@@ -1,5 +1,9 @@
 <template>
-  <div class="dashboard-container">
+  <div class="app-container">
+    <a href="https://github.com/tcheng8866/vue-admin">点击查看说明文档</a>
+    <div>{{ this.$store.state.app }}</div>
+    <div>{{ this.$store.state.settings }}</div>
+    <div>{{ this.$store.state.user }}</div>
     <component :is="currentRole" />
   </div>
 </template>
