@@ -1,44 +1,58 @@
+import Promise from 'es6-promise'
+Promise.polyfill()
+
 import Vue from 'vue'
-
-import Cookies from 'js-cookie'
-
-import 'normalize.css/normalize.css' // a modern alternative to CSS resets
-
+import 'normalize.css/normalize.css' // Normalize.css是一种CSS reset的替代方案
+import Cookies from 'js-cookie' // token存储在cookies
 import Element from 'element-ui'
 import './styles/element-variables.scss'
-import enLang from 'element-ui/lib/locale/lang/en'// 如果使用中文语言包请默认支持，无需额外引入，请删除该依赖
-
-import '@/styles/index.scss' // global css
-
+import '@/styles/index.scss'
 import App from './App'
 import store from './store'
 import router from './router'
-
 import './icons' // icon
 import './permission' // permission control
 import './utils/error-log' // error log
-
 import * as filters from './filters' // global filters
 
-/**
- * If you don't want to use mock-server
- * you want to use MockJs for mock api
- * you can execute: mockXHR()
- *
- * Currently MockJs will be used in the production environment,
- * please remove it before going online ! ! !
- */
-if (process.env.NODE_ENV === 'production') {
-  const { mockXHR } = require('../mock')
-  mockXHR()
-}
+import '@/global.less' // 全局覆盖样式
 
-Vue.use(Element, {
-  size: Cookies.get('size') || 'medium', // set element-ui default size
-  locale: enLang // 如果使用中文，无需设置，请删除
+import moment from 'moment'
+import { validateNull } from '@/utils/validate'
+import { getDefaultDate, isDateDiffOver, getAWeekAgoDate, getAMonthAgoDate, getLableBykey } from '@/utils/dataUtils'
+// 全局方法
+Vue.prototype.$moment = moment
+Vue.prototype.$validateNull = validateNull
+Vue.prototype.$getDefaultDate = getDefaultDate
+Vue.prototype.$isDateDiffOver = isDateDiffOver
+Vue.prototype.$getAWeekAgoDate = getAWeekAgoDate
+Vue.prototype.$getAMonthAgoDate = getAMonthAgoDate
+Vue.prototype.$getLableBykey = getLableBykey
+
+// 可视化
+import dataV from '@jiaminghi/data-view'
+Vue.use(dataV)
+
+// 百度地图
+import BaiduMap from 'vue-baidu-map'
+Vue.use(BaiduMap, {
+  ak: 'oLnP4KqCCZG8kVyMtP3af9f93M1mFmWc'
 })
 
-// register global utility filters
+import VCharts from 'v-charts'
+Vue.use(VCharts)
+
+// // 开发环境模拟数据
+// if (process.env.NODE_ENV === 'development') {
+//   const { mockXHR } = require('../mock')
+//   mockXHR()
+// }
+
+Vue.use(Element, {
+  size: Cookies.get('size') || 'medium' // set element-ui default size
+})
+
+// 注册全局过滤器
 Object.keys(filters).forEach(key => {
   Vue.filter(key, filters[key])
 })

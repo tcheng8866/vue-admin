@@ -1,0 +1,56 @@
+// 覆盖去掉二级页面icon时定位
+.nest-menu {
+  .el-menu-item {
+    padding-left: 50px !important;
+  }
+}
+// table cell 高度处理【包含有操作的列】
+.el-table {
+  td {
+    padding: 10px 0;
+    .cell {
+      line-height: 25px;
+    }
+  }
+}
+// 日期范围控件宽度350
+.date-box {
+  .el-form-item__content {
+    width: 250px;
+    .el-range-editor {
+      width: 100%;
+    }
+  }
+}
+// 覆盖表单默认input189
+.el-form-item__content {
+  .el-input__inner {
+    width: 200px;
+  }
+}
+// 覆盖调整宽度导致清除按钮位置
+.el-form-item {
+  .el-input__suffix {
+    width: 30px;
+  }
+}
+// 覆盖调整宽度导致日期控件清除按钮位置
+.el-date-editor {
+  .el-input__suffix {
+    margin-right: 20px;
+  }
+}
+// 覆盖默认lobel字体宽度过大过黑
+label {
+  font-weight: 100;
+}
+
+/* 隐刺，继续占空间 */
+.visibility {
+  visibility: hidden;
+}
+
+/* 解决elementUI 控制台滑动报错 */
+* {
+  touch-action: pan-y
+}

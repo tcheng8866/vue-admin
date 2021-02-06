@@ -85,3 +85,19 @@ export function isArray(arg) {
   }
   return Array.isArray(arg)
 }
+
+/**
+ * 判断是否为空
+ * @returns {Boolean} 为空返回true
+ */
+export function validateNull(val) {
+  if (val instanceof Array) {
+    if (val.length === 0) return true
+  } else if (val instanceof Object) {
+    if (JSON.stringify(val) === '{}') return true
+  } else {
+    if (val === 'null' || val === 'undefined' || !val) return true
+    return false
+  }
+  return false
+}

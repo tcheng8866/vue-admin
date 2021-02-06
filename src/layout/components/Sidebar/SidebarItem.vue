@@ -68,10 +68,11 @@ export default {
         }
       })
 
+      // 此处处理：子菜单只有1条，是否还显示父菜单
       // When there is only one child router, the child router is displayed by default
-      if (showingChildren.length === 1) {
-        return true
-      }
+      // if (showingChildren.length === 1) {
+      //   return true
+      // }
 
       // Show parent if there are no child router to display
       if (showingChildren.length === 0) {
