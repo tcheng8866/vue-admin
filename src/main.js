@@ -42,11 +42,11 @@ Vue.use(BaiduMap, {
 import VCharts from 'v-charts'
 Vue.use(VCharts)
 
-// // 开发环境模拟数据
-// if (process.env.NODE_ENV === 'development') {
-//   const { mockXHR } = require('../mock')
-//   mockXHR()
-// }
+// 生产环境模拟数据
+if (process.env.NODE_ENV === 'production') {
+  const { mockXHR } = require('../mock')
+  mockXHR()
+}
 
 Vue.use(Element, {
   size: Cookies.get('size') || 'medium' // set element-ui default size

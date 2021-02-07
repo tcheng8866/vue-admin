@@ -21,7 +21,7 @@
 
 # 额外增加的依赖 #
 
-- IE对VUE、ES6、Promise 最低支持到 IE9
+- IE对VUE、ES6、Promise 最低支持到 IE9[二选一]
 
 >     <script src = "https://cdn.polyfill.io/v2/polyfill.min.js"></script>
     npm i es6-promise --save-dev
