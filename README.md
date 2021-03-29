@@ -3,7 +3,7 @@
 - [使用文档](https://panjiachen.github.io/vue-element-admin-site/zh/)
 
 # npm install #
-- npm i xx      仅安装,不加入package.json
+- npm i xx     同 --save
 
 - npm i xx -g   安装至全局、非项目(如vue-cli)
 
@@ -36,6 +36,12 @@
 
 - vue-baidu-map 百度地图Vue版
 >     npm install vue-baidu-map --save
+
+- qrcodejs2 二维码及下载
+>     npm install qrcodejs2 --save
+
+- qrcodejs2 页面截图
+>     npm install html2canvas --save
 
 - v-charts 图表插件（配置项简单、更友好）
 >     npm i v-charts echarts --save

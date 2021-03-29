@@ -45,7 +45,7 @@
         <el-button type="primary" icon="el-icon-download" @click="currentPage=1;exportALL('queryForm')">导出</el-button>
       </el-form-item>
     </el-form>
-    <el-table v-loading="tableLoading" :data="tableData" border style="width: 100%">
+    <el-table v-loading="tableLoading" :data="tableData" :cell-class-name="cellClassName" border style="width: 100%">
       <el-table-column prop="documentName" label="姓名" />
       <el-table-column prop="phone" label="手机号" />
       <el-table-column prop="documentId" label="身份证号" />
@@ -81,7 +81,10 @@ export default {
     return {
       platformIdList: [],
       exportData: [],
-      tableData: [],
+      tableData: [
+        { documentName: 1, phone: 2, documentId: 3, platformId: 4 },
+        { documentName: 2, phone: 1, documentId: 3, platformId: 4 }
+      ],
       tableLoading: false,
       currentPage: 1,
       pageSize: 10,
@@ -123,9 +126,18 @@ export default {
     }
   },
   created() {
-    this.getLoadData()
+    // this.getLoadData()
   },
   methods: {
+    cellClassName({ row, column, rowIndex, columnIndex }) {
+      // row 行
+      // column 列
+      // rowIndex 当前行
+      // columnIndex 当前列
+      if (row.phone > 1 && columnIndex === 1) {
+        return 'red'
+      }
+    },
     getLoadData() {
       getSelectData(this, {
         pkInfo: `EC_PLATFORM.PLATFORM_ID|PLATFORM_NAME`
@@ -277,4 +289,8 @@ export default {
 </script>
 
 <style type="text/scss" lang="scss">
+.red {
+  color: red;
+  background-color: yellow;
+}
 </style>

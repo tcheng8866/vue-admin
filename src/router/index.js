@@ -176,6 +176,19 @@ export const constantRoutes = [
       }
     ]
   },
+  {
+    path: '/qrcodejs2',
+    redirect: '/qrcodejs2/index',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/qrcodejs2/index'),
+        name: 'qrcodejs2',
+        meta: { title: 'qrcodejs2', icon: 'international', noCache: true }
+      }
+    ]
+  },
   // 实例
   {
     path: '/demo',
