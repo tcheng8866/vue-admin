@@ -231,7 +231,8 @@ export default {
               'sceneId': 'bp/acct/cancel/query'
             },
             appHead: {
-              totalNum: this.totalCount,
+              // 导出时 首次查询 总条数未知
+              totalNum: '99999',
               currentPage: 1
             },
             body: param
